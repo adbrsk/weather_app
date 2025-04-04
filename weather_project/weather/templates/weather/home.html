@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .weather-box { margin-top: 20px; padding: 20px; border-radius: 8px; display: inline-block; background: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <form method="GET">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+        <div class="weather-box">
+            <h2>Weather in {{ weather.city }}</h2>
+            <p>Temperature: {{ weather.temperature }}°C</p>
+            <p>Wind Speed: {{ weather.wind_speed }} km/h</p>
+            <p>Humidity: {{ weather.humidity }}%</p>
+        </div>
+    {% elif error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
